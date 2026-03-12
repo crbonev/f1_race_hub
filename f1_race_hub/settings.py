@@ -28,9 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 MY_APPS = [
-    'drivers',
-    'races',
-    'teams',
+    'f1_race_hub.drivers',
+    'f1_race_hub.races',
+    'f1_race_hub.teams',
 ]
 # Application definition
 

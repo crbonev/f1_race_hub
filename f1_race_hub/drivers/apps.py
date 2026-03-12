@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class DriversConfig(AppConfig):
-    name = 'drivers'
+    name = 'f1_race_hub.drivers'
