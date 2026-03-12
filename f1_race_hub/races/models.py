@@ -8,3 +8,26 @@ class Race(models.Model):
     country = models.CharField(max_length=100)
     race_date = models.DateField()
     season = models.PositiveIntegerField()
+
+    drivers = models.ManyToManyField(Driver, through='RaceResult')
+
+    def __str__(self):
+        return f'{self.name} {self.season}'
+
+class RaceResult(models.Model):
+    race = models.ForeignKey(
+        Race,
+        on_delete=models.CASCADE
+    )
+
+    driver = models.ForeignKey(
+        Driver,
+        on_delete=models.CASCADE
+    )
+
+    position = models.PositiveIntegerField()
+    points = models.PositiveIntegerField()
+    fastest_lap = models.BooleanField(default=False)
+
+class Meta:
+    ordering = ['position']
