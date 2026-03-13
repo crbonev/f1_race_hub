@@ -29,5 +29,8 @@ class RaceResult(models.Model):
     points = models.PositiveIntegerField()
     fastest_lap = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f'{self.race} | {self.driver} | {self.position} | {self.points}'
+
 class Meta:
     ordering = ['position']
