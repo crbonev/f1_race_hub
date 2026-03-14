@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="text-center">
+
+    <h1>F1 Race Hub</h1>
+
+    <p>Your Formula 1 statistics platform</p>
+
+</div>
+
+<div class="row text-center mt-5">
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>{{ drivers_count }}</h3>
+                <p>Drivers</p>
+                <a href="{% url 'drivers-list' %}" class="btn btn-primary">View Drivers</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

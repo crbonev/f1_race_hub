@@ -3,9 +3,10 @@ from .models import Driver
 
 class CreateDriverForm(forms.ModelForm):
     class Meta:
+        model = Driver
         fields = (
             'first_name',
-            'last_name'
+            'last_name',
             'nationality',
             'driver_number',
             'championships',

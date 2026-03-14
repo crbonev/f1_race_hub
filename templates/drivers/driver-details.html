@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ driver.first_name }} {{ driver.last_name }}</h1>
+    <ul class="list-group">
+    
+        <li class="list-group-item">
+            <strong>Nationality:</strong> {{ driver.nationality }}
+        </li>
+        
+        <li class="list-group-item">
+            <strong>Number:</strong> {{ driver.driver_number }}
+        </li>
+        
+        <li class="list-group-item">
+            <strong>Team:</strong> {{ driver.team }}
+        </li>
+        
+        <li class="list-group-item">
+            <strong>Championships:</strong> {{ driver.championships }}
+        </li>
+    
+    </ul>
+    
+    <br>
+    
+    <a href="{% url 'driver-edit' driver.id %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'driver-delete' driver.id %}" class="btn btn-danger">Delete</a>
+
+{% endblock %}
