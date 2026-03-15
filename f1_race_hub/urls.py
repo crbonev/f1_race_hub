@@ -23,4 +23,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('drivers/', include('f1_race_hub.drivers.urls')),
     path('teams/', include('f1_race_hub.teams.urls')),
+    path('races/', include('f1_race_hub.races.urls')),
 ]

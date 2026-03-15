@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+
+<h2>Races</h2>
+
+<ul>
+    {% for race in races %}
+        <li>
+            <a href="{% url 'race-details' race.pk %}">
+                {{ race.name }} - {{ race.location }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'race-create' %}">Create Race</a>
+
+{% endblock %}
