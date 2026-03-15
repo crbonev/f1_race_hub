@@ -16,7 +16,7 @@
         <div class="card">
             <div class="card-body">
                 <h3>{{ drivers_count }}</h3>
-                <p>Drivers</p>
+                <p>Driver{{ drivers_count|pluralize }}</p>
                 <a href="{% url 'drivers-list' %}" class="btn btn-primary">View Drivers</a>
             </div>
         </div>
@@ -28,6 +28,16 @@
                 <h3>{{ teams_count }}</h3>
                 <p>Teams</p>
                 <a href="{% url 'teams-list' %}" class="btn btn-primary">View Teams</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>{{ races_count }}</h3>
+                <p>Race{{ races_count|pluralize }}</p>
+                <a href="{% url 'races-list' %}" class="btn btn-primary">View Race{{ races_count|pluralize }}</a>
             </div>
         </div>
     </div>
