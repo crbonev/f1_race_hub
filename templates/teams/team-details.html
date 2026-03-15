@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ team.name }}</h1>
+    
+    <ul class="list-group">
+    
+        <li class="list-group-item">
+            <strong>Country:</strong> {{ team.country }}
+        </li>
+        
+        <li class="list-group-item">
+            <strong>Founded:</strong> {{ team.founded }}
+        </li>
+        
+        <li class="list-group-item">
+            <strong>Team Principal:</strong> {{ team.team_principal }}
+        </li>
+        
+        <li class="list-group-item">
+            <strong>Championships:</strong> {{ team.championships }}
+        </li>
+    
+    </ul>
+    
+    <br>
+    
+    <h3>Drivers</h3>
+    
+    <ul>
+    
+        {% for driver in team.drivers.all %}
+        
+        <li>
+            {{ driver.first_name }} {{ driver.last_name }}
+        </li>
+        
+        {% empty %}
+        
+        <p>No drivers assigned.</p>
+        
+        {% endfor %}
+    
+    </ul>
+
+{% endblock %}

@@ -70,6 +70,8 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
+
 WSGI_APPLICATION = 'f1_race_hub.wsgi.application'
 
 

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Teams</h1>
+    
+    <a href="{% url 'team-create' %}" class="btn btn-primary mb-3">Add Team</a>
+    
+    <table class="table">
+    
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th></th>
+        </tr>
+        
+        {% for team in teams %}
+        
+        <tr>
+        
+            <td>
+                <a href="{% url 'team-details' team.id %}">
+                {{ team.name }}
+                </a>
+            </td>
+        
+            <td>{{ team.country }}</td>
+            
+                <td>
+                <a href="{% url 'team-details' team.id %}" class="btn btn-info btn-sm">Details</a>
+            </td>
+        
+        </tr>
+        
+        {% endfor %}
+    
+    </table>
+
+{% endblock %}
