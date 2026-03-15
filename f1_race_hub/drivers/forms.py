@@ -21,7 +21,7 @@ class CreateDriverForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'placeholder':'Verstappen'}),
         }
 
-    def driver_number_validation(self):
+    def clean_driver_number(self):
         number = self.cleaned_data['driver_number']
         if number < 1 or number > 99:
             raise forms.ValidationError("Driver Number must be between 1 and 99")
