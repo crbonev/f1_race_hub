@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Team(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     country = models.CharField(max_length=100)
     founded = models.PositiveIntegerField()
     team_principal = models.CharField(max_length=100)
