@@ -1,1 +1,15 @@
-working add driver 
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add Driver to {{ race.name }}</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button class="btn btn-success">
+        Add Result
+        </button>
+    </form>
+
+{% endblock %}

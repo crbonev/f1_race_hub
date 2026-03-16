@@ -5,7 +5,7 @@ from .models import Race, RaceResult
 class RaceCreateForm(forms.ModelForm):
     class Meta:
         model = Race
-        fields = '__all__'
+        exclude = ['drivers']
         widgets = {
             'race_date': forms.DateInput(attrs={'type': 'date'}),
         }

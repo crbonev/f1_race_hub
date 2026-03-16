@@ -14,12 +14,51 @@ def races_list(request):
 
 
 def race_details(request, pk):
-    return render(request, 'races/race-details.html', {'race': Race.objects.get(pk=pk)})
+    race = get_object_or_404(Race, pk=pk)
+
+    return render(
+        request,
+        'races/race-details.html',
+        {'race': race}
+    )
 
 
 def race_create(request):
-    return render(request, 'races/race-create.html')
+    if request.method == 'POST':
+        form = RaceCreateForm(request.POST)
+
+        if form.is_valid():
+            race = form.save()
+            return redirect('race-details', pk=race.pk)
+    else:
+        form = RaceCreateForm()
+
+    return render(
+        request,
+        'races/race-create.html',
+        {'form': form}
+    )
 
 
 def add_driver_to_race(request, pk):
-    return render(request, 'races/race-create.html', {'race': Race.objects.get(pk=pk)})
+    race = get_object_or_404(Race, pk=pk)
+
+    if request.method == 'POST':
+        form = RaceResultForm(request.POST)
+
+        if form.is_valid():
+            race_result = form.save(commit=False)
+            race_result.race = race
+            race_result.save()
+            return redirect('race-details', pk=race.pk)
+    else:
+        form = RaceResultForm()
+
+    return render(
+        request,
+        'races/add-driver.html',
+        {
+            'race': race,
+            'form': form,
+        }
+    )
