@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Races</h1>
+    
+    <a href="{% url 'race-create' %}" class="btn btn-primary">Create Race</a>
+    
+    <ul>
+        
+        {% for race in races %}
+        
+        <li>
+        
+            <a href="{% url 'race-details' race.id %}">
+            
+            {{ race.name }} {{ race.season }}
+        
+            </a>
+        
+        </li>
+        
+        {% endfor %}
+    
+    </ul>
+
+{% endblock %}
