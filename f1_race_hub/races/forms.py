@@ -19,4 +19,4 @@ class RaceResultForm(forms.ModelForm):
             'position',
             'points',
             'fastest_lap',
-        ]
+         ]

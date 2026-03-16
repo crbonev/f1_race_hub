@@ -1,1 +1,40 @@
-working race details 
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <h1>{{ race.name }}</h1>
+    
+    <p><strong>Circuit:</strong> {{ race.circuit }}</p>
+    <p><strong>Country:</strong> {{ race.country }}</p>
+    <p><strong>Date:</strong> {{ race.race_date }}</p>
+    <p><strong>Season:</strong> {{ race.season }}</p>
+    
+    <a href="{% url 'add-driver' race.id %}" class="btn btn-primary mb-3">
+        Add Driver to Race
+    </a>
+    
+    <h2>Results</h2>
+    
+    {% if race.raceresult_set.all %}
+        <table class="table table-striped">
+            <tr>
+                <th>Position</th>
+                <th>Driver</th>
+                <th>Points</th>
+                <th>Fastest Lap</th>
+            </tr>
+    
+            {% for result in race.raceresult_set.all %}
+                <tr>
+                    <td>{{ result.position }}</td>
+                    <td>{{ result.driver }}</td>
+                    <td>{{ result.points }}</td>
+                    <td>{{ result.fastest_lap|yesno:"Yes,No" }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No drivers added to this race yet.</p>
+    {% endif %}
+
+{% endblock %}
