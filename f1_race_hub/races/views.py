@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
-from f1_race_hub.races.models import Race
+from f1_race_hub.races.models import Race, RaceResult
 
 
 # Create your views here.
@@ -13,5 +13,10 @@ def race_create(request):
     return render(request, 'races/race-create.html')
 
 def race_details(request, pk):
-    race = Race.objects.get(pk=pk)
-    return render(request, 'races/race-details.html', {'race': race})
+    race = get_object_or_404(Race, pk=pk)
+    results = RaceResult.objects.filter(race=race)
+
+    return render(request, 'races/race-details.html', {
+        'race': race,
+        'results': results
+    })
