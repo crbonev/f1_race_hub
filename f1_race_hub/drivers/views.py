@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Driver
 from .forms import CreateDriverForm, DriverEditForm
+from f1_race_hub.teams.models import Team
 
 
 def drivers_list(request):
@@ -51,3 +52,31 @@ def driver_delete(request, pk):
         return redirect('drivers-list')
 
     return render(request, 'drivers/driver-delete.html', {'driver': driver})
+
+
+def driver_standings(request):
+    selected_team = request.GET.get('team', '')
+    sort_by = request.GET.get('sort', 'championships')
+
+    drivers = Driver.objects.select_related('team')
+
+    if selected_team:
+        drivers = drivers.filter(team_id=selected_team)
+
+    allowed_sorts = {
+        'championships': '-championships',
+        'number': 'driver_number',
+        'name': 'last_name',
+    }
+    drivers = drivers.order_by(allowed_sorts.get(sort_by, '-championships'), 'first_name')
+
+    teams = Team.objects.all().order_by('name')
+
+    context = {
+        'drivers': drivers,
+        'teams': teams,
+        'selected_team': selected_team,
+        'selected_sort': sort_by,
+    }
+
+    return render(request, 'drivers/driver-standings.html', context)

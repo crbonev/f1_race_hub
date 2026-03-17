@@ -2,9 +2,14 @@
 
 {% block content %}
 
-    <h1>Drivers</h1>
-    
-    <a href="{% url 'driver-create' %}" class="btn btn-primary">Add Driver</a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mb-0">Drivers</h1>
+
+        <div>
+            <a href="{% url 'driver-standings' %}" class="btn btn-outline-dark">View Driver Standings</a>
+            <a href="{% url 'driver-create' %}" class="btn btn-primary">Add Driver</a>
+        </div>
+    </div>
     
     <ul>
         {% for driver in drivers %}

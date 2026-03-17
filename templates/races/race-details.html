@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load f1_tags %}
 
 {% block content %}
     
@@ -26,7 +27,7 @@
     
             {% for result in race.raceresult_set.all %}
                 <tr>
-                    <td>{{ result.position }}</td>
+                    <td>{{ result.position|ordinal }}</td>
                     <td>{{ result.driver }}</td>
                     <td>{{ result.points }}</td>
                     <td>{{ result.fastest_lap|yesno:"Yes,No" }}</td>
