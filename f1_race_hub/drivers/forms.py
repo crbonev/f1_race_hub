@@ -29,5 +29,18 @@ class CreateDriverForm(forms.ModelForm):
 
 
 class DriverEditForm(CreateDriverForm):
-    class Meta(CreateDriverForm.Meta):
-        exclude = ['driver_number']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields["first_name"].disabled = True
+        self.fields["last_name"].disabled = True
+
+    def clean_first_name(self):
+        if self.instance and self.instance.pk:
+            return self.instance.first_name
+        return super().clean().get("first_name")
+
+    def clean_last_name(self):
+        if self.instance and self.instance.pk:
+            return self.instance.last_name
+        return super().clean().get("last_name")

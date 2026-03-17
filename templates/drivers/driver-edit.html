@@ -3,7 +3,7 @@
 {% block content %}
 
     <h1>Edit {{ driver }}</h1>
-    
+    <p class="text-muted">Driver name is read-only and cannot be edited.</p>
     <form method="post">
     
         {% csrf_token %}
