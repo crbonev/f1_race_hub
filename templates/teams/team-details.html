@@ -3,7 +3,11 @@
 {% block content %}
 
     <h1>{{ team.name }}</h1>
-    
+
+    <a href="{% url 'team-edit' team.id %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'team-delete' team.id %}" class="btn btn-danger">Delete</a>
+    <br><br>
+
     <ul class="list-group">
     
         <li class="list-group-item">
@@ -23,7 +27,7 @@
         </li>
     
     </ul>
-    
+
     <br>
     
     <h3>Drivers</h3>

@@ -19,3 +19,7 @@ class TeamCreateForm(forms.ModelForm):
             raise forms.ValidationError("F1 teams must be founded after 1950.")
 
         return year
+
+
+class TeamEditForm(TeamCreateForm):
+    pass
